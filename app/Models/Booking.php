@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Booking extends Model
 {
@@ -16,4 +17,19 @@ class Booking extends Model
         'final_price',
         'discount',
     ];
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function scapeRoom(): HasOne
+    {
+        return $this->hasOne(ScapeRoom::class);
+    }
+
+    public function timeSlot(): HasOne
+    {
+        return $this->hasOne(TimeSlot::class);
+    }
 }

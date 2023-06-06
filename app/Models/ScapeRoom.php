@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ScapeRoom extends Model
 {
@@ -14,4 +15,10 @@ class ScapeRoom extends Model
         'theme',
         'maximum_number'
     ];
+
+
+    public function timeSlots(): BelongsToMany
+    {
+        return $this->belongsToMany(TimeSlot::class);
+    }
 }
