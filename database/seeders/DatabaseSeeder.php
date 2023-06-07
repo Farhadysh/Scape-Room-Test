@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\ScapeRoom;
+use App\Models\TimeSlot;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $scapeRoom = ScapeRoom::create([
+            'name_of_room' => 's1', 
+            'theme' => 'scary',
+            'maximum_number' => 20,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        TimeSlot::create([
+            'scape_room_id' => $scapeRoom->id,
+            'time_slot' => Carbon::now()->addHours(8),
+            'price' => 50000,
+        ]);
     }
 }
