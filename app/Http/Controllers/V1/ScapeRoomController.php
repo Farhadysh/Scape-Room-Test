@@ -15,6 +15,10 @@ class ScapeRoomController extends Controller
         $this->scapeRoomRepository = $scapeRoomInterface;
     }
 
+    /**
+     * get all scape rooms
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $scape_rooms = $this->scapeRoomRepository->index();
@@ -22,6 +26,11 @@ class ScapeRoomController extends Controller
         return response()->json(['scape_rooms' => $scape_rooms]);
     }
 
+    /**
+     * show a single scape room
+     * @param \App\Models\ScapeRoom $scapeRoom
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show(ScapeRoom $scapeRoom)
     {
         $scape_room = $this->scapeRoomRepository->show($scapeRoom);
@@ -29,6 +38,11 @@ class ScapeRoomController extends Controller
         return response()->json(['scape_room' => $scape_room]);
     }
 
+    /**
+     * show availble time slots
+     * @param \App\Models\ScapeRoom $scapeRoom
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function timeSlots(ScapeRoom $scapeRoom)
     {
         $time_slots = $this->scapeRoomRepository->timeSlots($scapeRoom);

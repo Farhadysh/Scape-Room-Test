@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('v1')->group(function () {
 
     Route::name('scapeRooms.')->prefix('/scape_rooms')->group(function () {
@@ -28,11 +24,9 @@ Route::prefix('v1')->group(function () {
         Route::get('/{id}/timeSlots', [ScapeRoomController::class, 'timeSlots']);
     });
 
-    Route::name('bookings.')->prefix('/bookings')->group(function () {
+    Route::middleware('auth:sanctum')->name('bookings.')->prefix('/bookings')->group(function () {
         Route::get('/', [BookingController::class, 'index']);
         Route::post('/', [BookingController::class, 'store']);
         Route::delete('/{id}', [BookingController::class, 'delete']);
     });
-
-
 });

@@ -11,6 +11,10 @@ use Carbon\Carbon;
 
 class BookingRepository implements BookingInterface
 {
+    /**
+     * get all booking from auth user
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function index()
     {
         $user = auth()->user();
@@ -18,6 +22,11 @@ class BookingRepository implements BookingInterface
         return $user->bookings()->get();
     }
 
+    /**
+     * store new booking
+     * @param mixed $request
+     * @return void
+     */
     public function store($request)
     {
         $timeSlot = (new TimeSlot())->whereId($request->time_slot_id)->first();
@@ -31,6 +40,11 @@ class BookingRepository implements BookingInterface
         $booking->save();
     }
 
+    /**
+     * delete booking
+     * @param mixed $booking
+     * @return void
+     */
     public function delete($booking)
     {
         $booking->delete();

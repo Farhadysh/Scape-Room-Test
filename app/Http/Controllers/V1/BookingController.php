@@ -16,6 +16,10 @@ class BookingController extends Controller
         $this->bookingRepository = $bookingInterface;
     }
 
+    /**
+     * get all booking from auth user
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $bookings = $this->bookingRepository->index();
@@ -23,6 +27,11 @@ class BookingController extends Controller
         return response()->json(['bookings' => $bookings]);
     }
 
+    /**
+     * store new booking
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         //check double booking
@@ -35,6 +44,11 @@ class BookingController extends Controller
         return response()->json(['message' => 'store booking success'], 201);
     }
 
+    /**
+     * delete booking
+     * @param \App\Models\Booking $booking
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete(Booking $booking)
     {
         $this->bookingRepository->delete($booking);
