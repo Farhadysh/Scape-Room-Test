@@ -46,8 +46,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function booking(): BelongsToMany
+    public function bookings(): HasMany
     {
-        return $this->belongsToMany(Booking::class);
+        return $this->hasMany(Booking::class);
     }
 }

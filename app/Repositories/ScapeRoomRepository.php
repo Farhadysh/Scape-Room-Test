@@ -10,7 +10,7 @@ class ScapeRoomRepository implements ScapeRoomInterface
 {
     public function index()
     {
-        return new ScapeRoom();
+        return (new ScapeRoom())->all();
     }
 
     public function show($scapeRoom)
