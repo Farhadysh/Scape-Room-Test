@@ -13,6 +13,8 @@ class ScapeRoomTest extends TestCase
      */
     public function test_scape_room_index(): void
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get('api/v1/scape_rooms');
 
         $response->assertStatus(200);
@@ -20,6 +22,8 @@ class ScapeRoomTest extends TestCase
 
     public function test_scape_room_show(): void
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get('api/v1/scape_rooms/1');
 
         $response->assertStatus(200);
@@ -27,6 +31,8 @@ class ScapeRoomTest extends TestCase
 
     public function test_scape_room_timeSlots(): void
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get('api/v1/scape_rooms/1/timeSlots');
 
         $response->assertStatus(200);

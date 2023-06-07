@@ -21,11 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
 
-    Route::name('scapeRooms.')->prefix('scapeRooms')->group(function () {
+    Route::name('scapeRooms.')->prefix('/scape_rooms')->group(function () {
         Route::get('/', [ScapeRoomController::class, 'index']);
         Route::get('/{id}', [ScapeRoomController::class, 'show']);
         Route::get('/{id}/timeSlots', [ScapeRoomController::class, 'timeSlots']);
     });
 
-    
+
 });
