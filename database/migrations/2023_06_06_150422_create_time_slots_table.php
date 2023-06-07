@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('scape_room_id')->constrained();
             $table->time('time_slot');
+            $table->integer('maximum_number');
             $table->bigInteger('price');
             $table->timestamps();
         });

@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
         $scapeRoom = ScapeRoom::create([
             'name_of_room' => 's1', 
             'theme' => 'scary',
-            'maximum_number' => 20,
         ]);
 
         TimeSlot::create([
             'scape_room_id' => $scapeRoom->id,
             'time_slot' => Carbon::now()->addHours(8),
+            'maximum_number' => 10,
             'price' => 50000,
         ]);
     }

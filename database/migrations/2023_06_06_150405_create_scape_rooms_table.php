@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name_of_room');
             $table->string('theme')->unique();
-            $table->integer('maximum_number');
             $table->timestamps();
         });
     }

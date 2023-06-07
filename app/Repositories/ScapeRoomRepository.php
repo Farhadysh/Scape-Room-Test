@@ -20,6 +20,12 @@ class ScapeRoomRepository implements ScapeRoomInterface
 
     public function timeSlots($scapeRoom)
     {
-        return $scapeRoom->timeSlots;
+        $timeSlots = [];
+
+        foreach ($scapeRoom->timeSlots as $timeSlot) {
+            $timeSlots = $timeSlot->bookings()->count() >= $timeSlot->maximum_number;
+        }
+
+        return $timeSlots;
     }
 }

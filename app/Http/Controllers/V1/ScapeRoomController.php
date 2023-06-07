@@ -33,7 +33,7 @@ class ScapeRoomController extends Controller
     {
         $time_slots = $this->scapeRoomRepository->timeSlots($scapeRoom);
 
-        return response()->json(['time_slots',$time_slots]);
+        return response()->json(['time_slot_available',$time_slots]);
     }
 
 }
