@@ -12,28 +12,27 @@ class ScapeRoomController extends Controller
 
     public function __construct(ScapeRoomInterface $scapeRoomInterface)
     {
-        $this->scapeRoomRepository = $scapeRoomInterface; 
+        $this->scapeRoomRepository = $scapeRoomInterface;
     }
 
     public function index()
     {
         $scape_rooms = $this->scapeRoomRepository->index();
 
-        return response()->json(['scape_rooms',$scape_rooms]);
+        return response()->json(['scape_rooms' => $scape_rooms]);
     }
 
     public function show(ScapeRoom $scapeRoom)
     {
         $scape_room = $this->scapeRoomRepository->show($scapeRoom);
 
-        return response()->json(['scape_room',$scape_room]);
+        return response()->json(['scape_room' => $scape_room]);
     }
 
     public function timeSlots(ScapeRoom $scapeRoom)
     {
         $time_slots = $this->scapeRoomRepository->timeSlots($scapeRoom);
 
-        return response()->json(['time_slot_available',$time_slots]);
+        return response()->json(['time_slot_available' => $time_slots]);
     }
-
 }
